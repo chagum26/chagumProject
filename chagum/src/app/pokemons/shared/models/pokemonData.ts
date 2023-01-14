@@ -1,12 +1,12 @@
-import { Ability } from "./ability";
+import { imagePokemon } from "./imagePokemon";
 
 export interface PokemonData {
   id: number;
   name: string;
   height: number;
   weight: number;
+  sprites: imagePokemon;
   /*abilities: Ability[];
-  forms: Form[];
   species: Species;
   types: Type[];*/
 }

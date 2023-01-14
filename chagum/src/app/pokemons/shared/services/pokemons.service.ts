@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { PokemonData } from '../models/pokemonData';
+import { FormData } from '../models/formData';
 
 @Injectable({
   providedIn: 'root'
@@ -21,5 +22,9 @@ export class PokemonsService {
 
   getDataFromPokemon(url: string): Observable<PokemonData> {
     return this.http.get<PokemonData>(url);
+  }
+
+  getFormsById(id: number): Observable<FormData> {
+    return this.http.get<FormData>("https://pokeapi.co/api/v2/pokemon-form/" + id);
   }
 }

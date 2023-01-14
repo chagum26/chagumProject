@@ -1,8 +1,17 @@
-<ul>
-  <li *ngFor="let pokemon of listPokemon">
-      <span>{{ pokemon.name }}</span>
-      <span>:</span>
-      <span>{{ pokemon.pokeData.id }}</span>
-  </li>
-</ul>
+<mat-card *ngFor="let pokemon of listPokemon;" class="pokemon-card">
+  <mat-card-header>
+    <div mat-card-avatar [ngStyle]="{'background-image': 'url(' + pokemon.pokeData.sprites.front_default + ')'}" class="header-image"></div>
+    <mat-card-title>{{ pokemon.name }}</mat-card-title>
+    <mat-card-subtitle>{{ pokemon.pokeData.id }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    {{ pokemon.pokeData.weight / 10}} kg
+    {{ pokemon.pokeData.height / 10}} mètres
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="warn">LIKE</button>
+    <button mat-raised-button color="primary">SHARE</button>
+  </mat-card-actions>
+</mat-card>
+
 
