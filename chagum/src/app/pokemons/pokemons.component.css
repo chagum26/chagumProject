@@ -1,7 +1,19 @@
 .pokemon-card {
-  max-width: 300px;
+  max-width: 200px;
+  margin-bottom: 10px;
 }
 
 .header-image{
   background-size: cover;
 }
+
+.pokemon-content{
+  padding: 0px;
+  text-align: center;
+  display: block;
+}
+
+::ng-deep .mat-mdc-chip-set .mdc-evolution-chip-set__chips{
+  display: block;
+}
+

@@ -1,10 +1,9 @@
+import { MyPokemonData } from './shared/models/myPokemonData';
 import { PokemonsService } from './shared/services/pokemons.service';
 import { Component, OnInit } from '@angular/core';
 import { first } from 'rxjs';
 import { Pokemon } from './shared/models/pokemon';
-import { PokemonData } from './shared/models/pokemonData';
 import { PokemonAPI } from './shared/models/pokemonAPI';
-import { FormData } from './shared/models/formData';
 
 @Component({
   selector: 'app-pokemons',
@@ -14,7 +13,7 @@ import { FormData } from './shared/models/formData';
 export class PokemonsComponent implements OnInit {
   PokeAPI!: PokemonAPI;
   listPokemon: Pokemon[] = [];
-  pokeForms: FormData[] = [];
+  myPokemons: MyPokemonData[] = [];
 
   constructor(private pokemonService: PokemonsService) {}
 
@@ -25,26 +24,23 @@ export class PokemonsComponent implements OnInit {
   getPokemons(): void {
     this.pokemonService.getPokemonAPI()
     .pipe(first())
-    .subscribe((pokemonApi) => {
-      this.PokeAPI = pokemonApi;
+    .subscribe((pokemonsApi) => {
+      this.PokeAPI = pokemonsApi;
 
       this.PokeAPI.results.map((pokemon) => {
         this.pokemonService.getDataFromPokemon(pokemon.url)
         .pipe(first())
-        .subscribe((data) => {
-          pokemon.pokeData = data;
-          pokemon.name = this.capitalizeFirstLetter(pokemon.name);
-
-          this.pokemonService.getFormsById(pokemon.pokeData.id)
-          .pipe(first())
-          .subscribe((formData) => {
-            pokemon.pokeData.sprites = formData.sprites;
-            this.listPokemon.push(pokemon);
-            console.log(pokemon.pokeData.sprites.back_default);
-          })
+        .subscribe((pokemonData) => {
+          pokemon.pokeData = pokemonData;
+          this.getPokemonsDataFromAPI(pokemon);
         });
       });
     });
+  }
+
+  getPokemonsDataFromAPI(pokemonFromAPI: Pokemon) {
+    pokemonFromAPI.name = this.capitalizeFirstLetter(pokemonFromAPI.name);
+    this.myPokemons.push(this.pokemonService.convertPokemonsDataToMyPokemons(pokemonFromAPI.pokeData));
   }
 
   capitalizeFirstLetter(value: string): string {

@@ -1,4 +1,5 @@
-import { imagePokemon } from "./imagePokemon";
+import { imagePokemon } from "./forms/imagePokemon";
+import { TypesPokemon } from "./types/typesPokemon";
 
 export interface PokemonData {
   id: number;
@@ -6,6 +7,7 @@ export interface PokemonData {
   height: number;
   weight: number;
   sprites: imagePokemon;
+  types: TypesPokemon[];
   /*abilities: Ability[];
   species: Species;
   types: Type[];*/

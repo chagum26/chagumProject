@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { PokemonData } from '../models/pokemonData';
-import { FormData } from '../models/formData';
+import { MyPokemonData } from '../models/myPokemonData';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +24,35 @@ export class PokemonsService {
     return this.http.get<PokemonData>(url);
   }
 
-  getFormsById(id: number): Observable<FormData> {
-    return this.http.get<FormData>("https://pokeapi.co/api/v2/pokemon-form/" + id);
+  convertPokemonsDataToMyPokemons(pokemonData: PokemonData): MyPokemonData {
+    let myPokemon = new MyPokemonData();
+    for(const property in pokemonData) {
+      switch(property) {
+        case 'id':
+          myPokemon.id = pokemonData.id;
+          break;
+        case 'name':
+          myPokemon.name = pokemonData.name;
+          break;
+        case 'height':
+          myPokemon.height = pokemonData.height;
+          break;
+        case 'weight':
+          myPokemon.weight = pokemonData.weight;
+          break;
+        case 'sprites':
+          myPokemon.picturesUrl = pokemonData.sprites;
+          break;
+        case 'types':
+          pokemonData.types
+          .map((type) => {
+            myPokemon.types.push(type.type);
+          });
+          break;
+        default:
+          break;
+      }
+    }
+    return myPokemon;
   }
 }
