@@ -1,6 +1,6 @@
 <div class="content">
   <div fxLayout ="row wrap">
-    <div fxFlex="25%" *ngFor="let myPokemon of myPokemons;">
+    <div fxFlex="25%" *ngFor="let myPokemon of myPokemons;" fxLayoutAlign="space-around center">
       <mat-card class="pokemon-card">
         <mat-card-header class="pokemon-content">
           <mat-card-title>{{ myPokemon.name }}</mat-card-title>
@@ -8,7 +8,7 @@
         <mat-card-content class="pokemon-content">
           <ul style="list-style-type: none; padding:0px">
             <li>
-              <a href="{{ '/' + myPokemon.id }}">
+              <a routerLink ="{{ myPokemon.id }}">
                 <img src='{{ myPokemon.picturesUrl?.front_default }}'>
               </a>
             </li>
@@ -24,7 +24,3 @@
     </div>
   </div>
 </div>
-
-
-
-
