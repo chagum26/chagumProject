@@ -1,0 +1,26 @@
+<div class="content">
+  <div fxLayout ="row wrap">
+    <div fxFlex="25%" *ngFor="let myPokemon of myPokemons;" fxLayoutAlign="space-around center">
+      <mat-card class="pokemon-card">
+        <mat-card-header class="pokemon-content">
+          <mat-card-title>{{ myPokemon.name }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="pokemon-content">
+          <ul style="list-style-type: none; padding:0px">
+            <li>
+              <a routerLink ="{{ myPokemon.id }}">
+                <img src='{{ myPokemon.picturesUrl?.front_default }}'>
+              </a>
+            </li>
+            <li>
+            <mat-chip-listbox class="pokemon-content">
+              <mat-chip *ngFor="let type of myPokemon.types;">{{ type.name }}</mat-chip>
+            </mat-chip-listbox>
+            </li>
+         </ul>
+        </mat-card-content>
+      </mat-card>
+
+    </div>
+  </div>
+</div>
