@@ -13,8 +13,8 @@
               </a>
             </li>
             <li>
-            <mat-chip-listbox class="pokemon-content">
-              <mat-chip *ngFor="let type of myPokemon.types;">{{ type.name }}</mat-chip>
+            <mat-chip-listbox class="pokemon-content type-chip">
+              <mat-chip *ngFor="let type of myPokemon.types;" [ngStyle]="{'background-color': type.color}">{{ type.name }}</mat-chip>
             </mat-chip-listbox>
             </li>
          </ul>
