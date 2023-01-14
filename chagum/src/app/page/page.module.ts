@@ -1,3 +1,4 @@
+import { MatChipsModule } from '@angular/material/chips';
 import { AppModule } from './../app.module';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -13,6 +14,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     RouterModule,
     MatIconModule,
     MatToolbarModule,
+    MatChipsModule,
   ],
   declarations: [PageComponent, HeaderComponent]
 })
