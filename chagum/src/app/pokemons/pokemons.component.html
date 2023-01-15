@@ -1,3 +1,11 @@
+<mat-paginator [length]="paginatorData.length"
+              [pageSize]="paginatorData.pageSize"
+              [pageSizeOptions]="[10, 20, 100]"
+              (page)="onChangePaginatorPokemons($event)"
+              aria-label="Select page"
+              class="paginator-pokemon">
+</mat-paginator>
+
 <div class="content">
   <div fxLayout ="row wrap">
     <div fxFlex="25%" *ngFor="let myPokemon of myPokemons;" fxLayoutAlign="space-around center">
@@ -20,7 +28,14 @@
          </ul>
         </mat-card-content>
       </mat-card>
-
     </div>
   </div>
 </div>
+
+<mat-paginator [length]="paginatorData.length"
+              [pageSize]="paginatorData.pageSize"
+              [pageSizeOptions]="[10, 20, 100]"
+              (page)="onChangePaginatorPokemons($event)"
+              aria-label="Select page">
+</mat-paginator>
+

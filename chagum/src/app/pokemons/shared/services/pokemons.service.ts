@@ -1,3 +1,4 @@
+import { PageEvent } from '@angular/material/paginator';
 import { TypesPokemon } from './../models/types/typesPokemon';
 import { PokemonAPI } from './../models/pokemonAPI';
 import { HttpClient } from '@angular/common/http';
@@ -36,8 +37,9 @@ export class PokemonsService {
 
   constructor(private http: HttpClient) {}
 
-  getPokemonAPI(): Observable<PokemonAPI> {
-    return this.http.get<PokemonAPI>(this.host + '/pokemon?limit=60');
+  getPokemonAPI(paginatorData: PageEvent): Observable<PokemonAPI> {
+    let offset = paginatorData.pageIndex * paginatorData.pageSize;
+    return this.http.get<PokemonAPI>(this.host + '/pokemon?offset='+ offset +'&limit=' + paginatorData.pageSize);
   }
 
   getDataFromPokemon(url: string): Observable<PokemonData> {
