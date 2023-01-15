@@ -20,14 +20,18 @@ export class PokemonsComponent implements OnInit {
     pageSize: 20,
     length: 1279,
   };
+  pageNumbers: number[] = [];
+  goTo: number = 1;
 
   constructor(private pokemonService: PokemonsService) {}
 
   ngOnInit(): void {
+    this.updateGoto();
     this.getPokemons(this.paginatorData);
   }
 
   getPokemons(paginatorData: PageEvent): void {
+    this.myPokemons = [];
     this.pokemonService.getPokemonAPI(paginatorData)
     .pipe(first())
     .subscribe((pokemonsApi) => {
@@ -47,6 +51,7 @@ export class PokemonsComponent implements OnInit {
   getPokemonsDataFromAPI(pokemonFromAPI: Pokemon) {
     pokemonFromAPI.pokeData.name = this.capitalizeFirstLetter(pokemonFromAPI.pokeData.name);
     this.myPokemons.push(this.pokemonService.convertPokemonsDataToMyPokemons(pokemonFromAPI.pokeData));
+    this.myPokemons.sort((a, b) => a.id - b.id)
   }
 
   capitalizeFirstLetter(value: string): string {
@@ -54,9 +59,22 @@ export class PokemonsComponent implements OnInit {
   }
 
   onChangePaginatorPokemons($event: PageEvent) {
-    console.log($event);
     this.paginatorData = $event
-    this.myPokemons = [];
     this.getPokemons(this.paginatorData);
+    this.updateGoto();
+  }
+
+  goToChange($event: any) {
+    this.goTo = $event.value;
+    this.paginatorData.pageIndex = $event.value - 1;
+    this.getPokemons(this.paginatorData);
+  }
+
+  updateGoto() {
+    this.goTo = this.paginatorData.pageIndex + 1;
+    this.pageNumbers = [];
+    for (let i = 1; i <= Math.ceil(this.paginatorData.length / this.paginatorData.pageSize); i++) {
+      this.pageNumbers.push(i);
+    }
   }
 }
