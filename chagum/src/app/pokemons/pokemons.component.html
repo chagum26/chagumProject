@@ -44,13 +44,22 @@
   </div>
 </div>
 
-
-<mat-paginator [length]="paginatorData.length"
-              [pageSize]="paginatorData.pageSize"
-              [pageSizeOptions]="[10, 20, 100]"
-              [pageIndex]="paginatorData.pageIndex"
-              (page)="onChangePaginatorPokemons($event)"
-              aria-label="Select page">
-</mat-paginator>
-
+<div class="d-flex">
+  <mat-paginator [length]="paginatorData.length"
+                [pageSize]="paginatorData.pageSize"
+                [pageSizeOptions]="[10, 20, 100]"
+                [pageIndex]="paginatorData.pageIndex"
+                (page)="onChangePaginatorPokemons($event)"
+                aria-label="Select page"
+                class="paginator-pokemon">
+  </mat-paginator>
+  <div class="go-to-container">
+    <div class="go-to-label">Page : </div>
+    <mat-form-field>
+      <mat-select [(ngModel)]="goTo" (selectionChange)="goToChange($event)">
+        <mat-option *ngFor="let pageNumber of pageNumbers" [value]="pageNumber">{{pageNumber}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>
 

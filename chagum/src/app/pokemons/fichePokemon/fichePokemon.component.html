@@ -1,3 +1,4 @@
-<p>
-  fichePokemon works!
-</p>
+{{ myFichePokemonData?.name }}
+<mat-chip-listbox>
+  <mat-chip *ngFor="let type of myFichePokemonData?.types;" [ngStyle]="{'background-color': type.color}">{{ type.name }}</mat-chip>
+</mat-chip-listbox>
