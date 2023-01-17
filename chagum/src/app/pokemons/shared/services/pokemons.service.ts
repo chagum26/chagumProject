@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment';
 import { PokemonData } from '../models/pokemonData';
 import { MyPokemonData } from '../models/myPokemonData';
 import { ColorService } from 'src/app/shared/services/color.service';
+import { MyPokemonAutocompleteData } from '../models/myPokemonAutocompleteData';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +27,15 @@ export class PokemonsService {
     return this.http.get<PokemonAPI>(this.host + '/pokemon?offset='+ offset +'&limit=' + paginatorData.pageSize);
   }
 
+  getAllPokemonAPI(): Observable<PokemonAPI> {
+    return this.http.get<PokemonAPI>(this.host + '/pokemon?limit=' + 1279);
+  }
+
   getDataFromPokemon(url: string): Observable<PokemonData> {
+    return this.http.get<PokemonData>(url);
+  }
+
+  getDataAutoCompleteFromPokemon(url: string): Observable<MyPokemonAutocompleteData> {
     return this.http.get<PokemonData>(url);
   }
 
@@ -39,12 +48,6 @@ export class PokemonsService {
           break;
         case 'name':
           myPokemon.name = pokemonData.name;
-          break;
-        case 'height':
-          myPokemon.height = pokemonData.height;
-          break;
-        case 'weight':
-          myPokemon.weight = pokemonData.weight;
           break;
         case 'sprites':
           myPokemon.picturesUrl = pokemonData.sprites;

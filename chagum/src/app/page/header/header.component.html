@@ -1,12 +1,47 @@
-<p class="header-app">
+<div class="header-app">
   <mat-toolbar color="warn">
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <span>Ma page POKEMON</span>
+    <div fxShow="true" >
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+    <a mat-button class="companyName" routerLink="/">
+      <span>Ma page Pokemon</span>
+    </a>
     <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-      <mat-icon>share</mat-icon>
-    </button>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Pokemon</mat-label>
+        <input
+          type="text"
+          matInput [formControl]="myControl"
+          [matAutocomplete]="auto"
+          class="input-autocomplete-header"
+        >
+          <mat-autocomplete
+            #auto="matAutocomplete"
+            [displayWith]="displayFn"
+          >
+            <ng-container *ngFor="let option of filteredOptions | async">
+              <mat-option [value]="option">
+                {{option.name}}
+              </mat-option>
+          </ng-container>
+          </mat-autocomplete>
+    </mat-form-field>
+    <div fxShow="true" fxHide.lt-md="true">
+      <a mat-button routerLink="/pokemons">Pokemons</a>
+      <a mat-button routerLink="/berries">Berries</a>
+    </div>
+
   </mat-toolbar>
-</p>
+
+  <mat-sidenav-container class="example-container">
+    <mat-sidenav color="primary" #sidenav fxLayout="column" mode="over"  opened="false">
+      <div fxLayout="column">
+        <a mat-button routerLink="/pokemons">Pokemons</a>
+        <a mat-button routerLink="/berries">Berries</a>
+      </div>
+    </mat-sidenav>
+    <router-outlet></router-outlet>
+  </mat-sidenav-container>
+</div>

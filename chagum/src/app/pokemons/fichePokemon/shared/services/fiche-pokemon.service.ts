@@ -1,3 +1,4 @@
+import { FichePokemonData } from './../models/fichePokemonData';
 import { ColorService } from './../../../../shared/services/color.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -19,8 +20,8 @@ export class FichePokemonService {
     return this.http.get<PokemonData>("https://pokeapi.co/api/v2/pokemon/" + id);
   }
 
-  convertPokemonsDataToFichePokemonData(pokemonData: PokemonData): MyPokemonData {
-    let myPokemon = new MyPokemonData();
+  convertPokemonsDataToFichePokemonData(pokemonData: PokemonData): FichePokemonData {
+    let myPokemon = new FichePokemonData();
     for(const property in pokemonData) {
       switch(property) {
         case 'id':
