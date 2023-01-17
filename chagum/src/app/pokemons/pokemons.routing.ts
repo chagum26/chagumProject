@@ -9,7 +9,7 @@ const routes: Routes = [
     pathMatch:'full',
   },
   {
-    path: ':name',
+    path: 'pokemon/:name',
     component: FichePokemonComponent,
     loadChildren: () =>
       import('./fichePokemon/fichePokemon.module').then((m) => m.FichePokemonModule),

@@ -9,8 +9,8 @@
       <span>Ma page Pokemon</span>
     </a>
     <span class="example-spacer"></span>
-    <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>Pokemon</mat-label>
+    <mat-form-field class="autocomplete-header" appearance="fill">
+      <mat-label>Nom du pokemon</mat-label>
         <input
           type="text"
           matInput [formControl]="myControl"
@@ -22,7 +22,7 @@
             [displayWith]="displayFn"
           >
             <ng-container *ngFor="let option of filteredOptions | async">
-              <a routerLink ="{{ 'pokemons/' + option.name.toLowerCase() }}">
+              <a routerLink ="{{ 'pokemons/pokemon/' + option.name.toLowerCase() }}">
                 <mat-option [value]="option">
                   {{option.name}}
                 </mat-option>

@@ -16,7 +16,6 @@ export class HeaderComponent implements OnInit {
   options: Pokemon[] = [];
   PokeAPI!: PokemonAPI;
 
-
   constructor(private pokemonService: PokemonsService) { }
 
   ngOnInit() {
