@@ -20,7 +20,7 @@ export class FichePokemonComponent implements OnInit {
     length: 1279,
   };
   pokemonData!: PokemonData;
-  pokemonId!: string;
+  pokemonName!: string;
   myFichePokemonData?: FichePokemonData;
 
   constructor(
@@ -29,8 +29,8 @@ export class FichePokemonComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.pokemonId = this.route.snapshot.paramMap.get('id')!;
-    this.fichePokemonService.getDataFromPokemonById(Number(this.pokemonId))
+    this.pokemonName = this.route.snapshot.paramMap.get('name')!;
+    this.fichePokemonService.getDataFromPokemonByName(this.pokemonName)
       .pipe(first())
       .subscribe((pokemonData) => {
         this.pokemonData = pokemonData;

@@ -8,7 +8,6 @@ import { environment } from 'src/environments/environment';
 import { PokemonData } from '../models/pokemonData';
 import { MyPokemonData } from '../models/myPokemonData';
 import { ColorService } from 'src/app/shared/services/color.service';
-import { MyPokemonAutocompleteData } from '../models/myPokemonAutocompleteData';
 
 @Injectable({
   providedIn: 'root'
@@ -32,10 +31,6 @@ export class PokemonsService {
   }
 
   getDataFromPokemon(url: string): Observable<PokemonData> {
-    return this.http.get<PokemonData>(url);
-  }
-
-  getDataAutoCompleteFromPokemon(url: string): Observable<MyPokemonAutocompleteData> {
     return this.http.get<PokemonData>(url);
   }
 

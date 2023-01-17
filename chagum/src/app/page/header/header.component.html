@@ -22,9 +22,11 @@
             [displayWith]="displayFn"
           >
             <ng-container *ngFor="let option of filteredOptions | async">
-              <mat-option [value]="option">
-                {{option.name}}
-              </mat-option>
+              <a routerLink ="{{ 'pokemons/' + option.name.toLowerCase() }}">
+                <mat-option [value]="option">
+                  {{option.name}}
+                </mat-option>
+              </a>
           </ng-container>
           </mat-autocomplete>
     </mat-form-field>

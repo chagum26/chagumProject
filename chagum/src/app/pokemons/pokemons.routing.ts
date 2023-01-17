@@ -9,13 +9,12 @@ const routes: Routes = [
     pathMatch:'full',
   },
   {
-    path: ':id',
+    path: ':name',
     component: FichePokemonComponent,
     loadChildren: () =>
       import('./fichePokemon/fichePokemon.module').then((m) => m.FichePokemonModule),
     pathMatch:'full',
   }
-
 ];
 
 export const PokemonsRoutes = RouterModule.forChild(routes);

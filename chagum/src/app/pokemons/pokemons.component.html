@@ -29,7 +29,7 @@
       <mat-card-content class="pokemon-content">
         <ul style="list-style-type: none; padding:0px">
           <li>
-            <a routerLink ="{{ myPokemon.id }}">
+            <a routerLink ="{{ myPokemon.name.toLowerCase() }}">
               <img src='{{ myPokemon.picturesUrl?.front_default}}'>
             </a>
           </li>

@@ -1,4 +1,3 @@
-import { MyPokemonAutocompleteData } from './../../pokemons/shared/models/myPokemonAutocompleteData';
 import { PokemonsService } from './../../pokemons/shared/services/pokemons.service';
 import { Pokemon } from './../../pokemons/shared/models/pokemon';
 import { Component, OnInit } from '@angular/core';
@@ -12,9 +11,9 @@ import { PokemonAPI } from 'src/app/pokemons/shared/models/pokemonAPI';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  myControl = new FormControl<string | MyPokemonAutocompleteData[]>('');
-  filteredOptions!: Observable<MyPokemonAutocompleteData[]>;
-  options: MyPokemonAutocompleteData[] = [];
+  myControl = new FormControl<string | Pokemon>('');
+  filteredOptions!: Observable<Pokemon[]>;
+  options: Pokemon[] = [];
   PokeAPI!: PokemonAPI;
 
 
@@ -22,22 +21,20 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.getPokemons();
-
+    this.filteredOptions = this.myControl.valueChanges.pipe(
+      startWith(''),
+      map(value => {
+        const name = typeof value === 'string' ? value : value?.name;
+        return name ? this._filter(name as string) : this.options.slice();
+      }),
+    );
   }
 
   getPokemons(): void {
     this.pokemonService.getAllPokemonAPI()
     .pipe(first())
     .subscribe((pokemonsApi) => {
-      this.PokeAPI = pokemonsApi;
-
-      this.PokeAPI.results.map((pokemon) => {
-        this.pokemonService.getDataAutoCompleteFromPokemon(pokemon.url)
-        .pipe(first())
-        .subscribe((pokemonData) => {
-          this.options.push(pokemonData);
-        });
-      });
+      this.options = pokemonsApi.results
     });
   }
 
@@ -45,7 +42,7 @@ export class HeaderComponent implements OnInit {
     return pokemon && pokemon.name ? pokemon.name : '';
   }
 
-  private _filter(name: string): MyPokemonAutocompleteData[] {
+  private _filter(name: string): Pokemon[] {
     const filterValue = name.toLowerCase();
 
     return this.options.filter(option => option.name.toLowerCase().includes(filterValue));

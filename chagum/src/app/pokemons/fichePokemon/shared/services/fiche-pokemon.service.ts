@@ -16,8 +16,8 @@ export class FichePokemonService {
     private colorService: ColorService,
     ) {}
 
-  getDataFromPokemonById(id: number): Observable<PokemonData> {
-    return this.http.get<PokemonData>("https://pokeapi.co/api/v2/pokemon/" + id);
+  getDataFromPokemonByName(name: string): Observable<PokemonData> {
+    return this.http.get<PokemonData>("https://pokeapi.co/api/v2/pokemon/" + name);
   }
 
   convertPokemonsDataToFichePokemonData(pokemonData: PokemonData): FichePokemonData {
