@@ -1,5 +1,5 @@
 <div class="cartes-pokemon">
-  <div class="d-flex">
+  <div class="d-flex pagination-cartes">
     <mat-paginator [length]="paginatorData.length"
                   [pageSize]="paginatorData.pageSize"
                   [pageSizeOptions]="[10, 20, 100]"
@@ -17,8 +17,6 @@
       </mat-form-field>
     </div>
   </div>
-
-
 
   <div fxLayout ="row wrap">
     <div fxFlex="25%" *ngFor="let myPokemon of myPokemons;" fxLayoutAlign="center center">
@@ -43,7 +41,7 @@
     </div>
   </div>
 
-  <div class="d-flex">
+  <div class="d-flex pagination-cartes">
     <mat-paginator [length]="paginatorData.length"
                   [pageSize]="paginatorData.pageSize"
                   [pageSizeOptions]="[10, 20, 100]"
