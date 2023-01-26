@@ -18,24 +18,26 @@
     </div>
   </div>
 
-  <div fxLayout ="row wrap">
-    <div fxFlex="25%" *ngFor="let myPokemon of myPokemons;" fxLayoutAlign="center center">
+  <div class="grid grid-cols-4">
+    <div *ngFor="let myPokemon of myPokemons;" fxLayoutAlign="center none">
       <mat-card class="carte-pokemon">
         <mat-card-header class="pokemon-content">
           <mat-card-title>{{ myPokemon.name }}</mat-card-title>
           <mat-card-subtitle>#{{ myPokemon.id }}</mat-card-subtitle>
         </mat-card-header>
-        <mat-card-content class="pokemon-content">
-          <li>
-            <a routerLink ="{{ 'pokemon/' + myPokemon.name.toLowerCase() }}">
-              <img src='{{ myPokemon.picturesUrl?.front_default}}'>
-            </a>
-          </li>
-          <li>
-          <mat-chip-listbox class="pokemon-content type-chip">
-            <mat-chip *ngFor="let type of myPokemon.types;" [ngStyle]="{'background-color': type.color}">{{ type.name }}</mat-chip>
-          </mat-chip-listbox>
-          </li>
+        <mat-card-content class="pokemon-content ">
+          <div class="flex flex-col">
+            <li class="flex justify-center">
+              <a routerLink ="{{ 'pokemon/' + myPokemon.name.toLowerCase() }}">
+                <img src='{{ myPokemon.picturesUrl?.front_default}}'>
+              </a>
+            </li>
+            <li>
+            <mat-chip-listbox class="pokemon-content type-chip">
+              <mat-chip *ngFor="let type of myPokemon.types;" [ngStyle]="{'background-color': type.color}">{{ type.name }}</mat-chip>
+            </mat-chip-listbox>
+            </li>
+          </div>
         </mat-card-content>
       </mat-card>
     </div>

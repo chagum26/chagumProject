@@ -47,3 +47,7 @@
 .pagination-cartes {
   justify-content: flex-end;
 }
+
+::ng-deep .mat-mdc-text-field-wrapper.mdc-text-field {
+  background-color: white;
+}
