@@ -1,0 +1,53 @@
+.pokemon-content{
+  padding: 0px;
+  text-align: center;
+  display: block;
+  list-style-type: none;
+}
+
+.carte-pokemon {
+  max-width: 50%;
+  min-width: 50%;
+  margin-bottom: 10px;
+}
+
+::ng-deep .mat-mdc-chip-set .mdc-evolution-chip-set__chips{
+  display: block;
+}
+
+::ng-deep .mat-card {
+  margin:10px
+}
+
+.display-carte-pokemon{
+  display: flex;
+  justify-content: center;
+}
+
+.photos-pokemon {
+  justify-content:center;
+}
+
+img {
+  min-width: 150px;
+}
+
+.circular_image {
+  width: 200px;
+  height: 200px;
+  border-radius: 51%;
+  overflow: hidden;
+  background-color: black;
+  /* commented for demo
+  float: left;
+  margin-left: 125px;
+  margin-top: 20px;
+  */
+
+  /*for demo*/
+  display:inline-block;
+  vertical-align:middle;
+}
+.circular_image img{
+  width:100%;
+}
