@@ -1,3 +1,4 @@
+import { DescriptionGeneraleComponent } from './descriptionGenerale/descriptionGenerale.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FichePokemonComponent } from './fichePokemon.component';
@@ -9,6 +10,6 @@ import { SharedModule } from 'src/app/shared/shared.module';
     FichePokemonRoutes,
     SharedModule,
   ],
-  declarations: [FichePokemonComponent]
+  declarations: [FichePokemonComponent, DescriptionGeneraleComponent]
 })
 export class FichePokemonModule { }

@@ -8,8 +8,12 @@
           <mat-icon>menu</mat-icon>
         </button>
       </div>
-      <div class="c">
-        <router-outlet></router-outlet>
+      <div class="c flex flex-col">
+        <div class="flex-auto">
+          <mat-drawer-content>
+              <router-outlet></router-outlet>
+          </mat-drawer-content>
+        </div>
       </div>
     </div>
   </mat-drawer-content>

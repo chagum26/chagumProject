@@ -6,6 +6,10 @@
   position:relative;
 }
 
-.b{
+.b,c{
   position:absolute;
+}
+
+.b {
+  z-index: 10;
 }

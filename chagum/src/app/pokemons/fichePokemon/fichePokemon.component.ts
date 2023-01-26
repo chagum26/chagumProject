@@ -13,29 +13,16 @@ import { PageEvent } from '@angular/material/paginator';
   styleUrls: ['./fichePokemon.component.css']
 })
 export class FichePokemonComponent implements OnInit {
-  paginatorData: PageEvent = {
-    previousPageIndex: 0,
-    pageIndex: 0,
-    pageSize: 20,
-    length: 1279,
-  };
-  pokemonData!: PokemonData;
   pokemonName!: string;
-  myFichePokemonData?: FichePokemonData;
 
   constructor(
     private route: ActivatedRoute,
-    private fichePokemonService: FichePokemonService,
     ) { }
 
   ngOnInit() {
-    this.pokemonName = this.route.snapshot.paramMap.get('name')!;
-    this.fichePokemonService.getDataFromPokemonByName(this.pokemonName)
-      .pipe(first())
-      .subscribe((pokemonData) => {
-        this.pokemonData = pokemonData;
-        this.myFichePokemonData = this.fichePokemonService.convertPokemonsDataToFichePokemonData(pokemonData);
-      });
+    this.route.params.subscribe((params) => {
+      this.pokemonName = params['name'];
+    });
   }
 
 }
