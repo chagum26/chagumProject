@@ -22,8 +22,13 @@ export class DescriptionGeneraleComponent implements OnChanges {
       .pipe(first())
       .subscribe((pokemonData) => {
         this.pokemonData = pokemonData;
+        this.pokemonData.name = this.capitalizeFirstLetter(this.pokemonData.name);
         this.myFichePokemonData = this.descriptionGeneraleService.convertPokemonsDataToFichePokemonData(pokemonData);
       });
+  }
+
+  capitalizeFirstLetter(value: string): string {
+    return value.charAt(0).toUpperCase() + value.slice(1);
   }
 
 }

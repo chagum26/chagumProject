@@ -2,14 +2,11 @@
   background-color: white;
 }
 
-.a{
+.ma-page{
   position:relative;
 }
 
-.b,c{
+.bouton-menu{
   position:absolute;
-}
-
-.b {
   z-index: 10;
 }

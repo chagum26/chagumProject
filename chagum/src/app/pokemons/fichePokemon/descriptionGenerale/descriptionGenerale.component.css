@@ -1,7 +1,7 @@
-.pokemon-content{
+.pokemon-name{
   padding: 0px;
-  text-align: center;
-  display: block;
+  display: flex;
+  justify-content: center;
   list-style-type: none;
 }
 
@@ -11,43 +11,54 @@
   margin-bottom: 10px;
 }
 
-::ng-deep .mat-mdc-chip-set .mdc-evolution-chip-set__chips{
-  display: block;
-}
-
-::ng-deep .mat-card {
-  margin:10px
-}
-
 .display-carte-pokemon{
   display: flex;
   justify-content: center;
 }
 
-.photos-pokemon {
-  justify-content:center;
+.label-id {
+  display: flex;
+  align-items: center;
 }
 
-img {
-  min-width: 150px;
+.col-left,
+.col-right {
+  max-width: 50%;
+  min-width: 50%;
 }
 
-.circular_image {
+::ng-deep .mat-mdc-card.mdc-card.pictures-card-mat{
+  border-radius: 10px 50px 10px;
+  box-shadow: 4px 6px 5px 0px rgba(108,133,145,0.75);
+  -webkit-box-shadow: 4px 6px 5px 0px rgba(108,133,145,0.75);
+  -moz-box-shadow: 4px 6px 5px 0px rgba(108,133,145,0.75);
+}
+
+.pictures-card-mat {
+  background-color: #6c8591;
+}
+
+.pictures {
+  margin-top: 10px;
+  display: flex;
+  border-top: 2px solid black;
+  padding-top: 10px;
+}
+
+.pictures div {
+  width: 50%;
+}
+
+.pictures div img{
+  border:3px solid #acc0c8;
+  background-color: #6c8591;
+  border-radius: 50%;
+  margin-bottom: 10px;
   width: 200px;
-  height: 200px;
-  border-radius: 51%;
-  overflow: hidden;
-  background-color: black;
-  /* commented for demo
-  float: left;
-  margin-left: 125px;
-  margin-top: 20px;
-  */
-
-  /*for demo*/
-  display:inline-block;
-  vertical-align:middle;
 }
-.circular_image img{
-  width:100%;
+
+.shiney-picture,
+.default-picture {
+  display: flex;
+  justify-content: center;
 }

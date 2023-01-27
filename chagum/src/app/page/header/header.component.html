@@ -10,6 +10,12 @@
     </div>
   </div>
   <div class="navbar-right">
+    <div fxShow="true" fxHide.lt-md="true">
+      <a mat-button routerLink="/pokemons">Pokemons</a>
+    </div>
+    <div>
+      <a mat-button routerLink="/berries">Berries</a>
+    </div>
     <div class="auto-complete-navbar">
       <mat-form-field class="autocomplete-header" appearance="fill">
         <mat-label class="autocomplete-label">Rechercher un pokemon</mat-label>
@@ -32,12 +38,6 @@
             </ng-container>
             </mat-autocomplete>
       </mat-form-field>
-    </div>
-    <div fxShow="true" fxHide.lt-md="true">
-      <a mat-button routerLink="/pokemons">Pokemons</a>
-    </div>
-    <div>
-      <a mat-button routerLink="/berries">Berries</a>
     </div>
   </div>
 </mat-toolbar>
