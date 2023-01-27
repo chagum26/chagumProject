@@ -1,36 +1,43 @@
 
-<mat-toolbar color="warn">
-  <div class="pokemonLogo">
-    <a mat-button routerLink="/">
-      <span>
-        <img class="maxsizeLogo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1200px-International_Pok%C3%A9mon_logo.svg.png">
-      </span>
-    </a>
+<mat-toolbar color="warn" class="navbar">
+  <div class="navbar-left">
+    <div class="pokemonLogo">
+      <a mat-button routerLink="/">
+        <span>
+          <img class="maxsizeLogo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1200px-International_Pok%C3%A9mon_logo.svg.png">
+        </span>
+      </a>
+    </div>
   </div>
-  <span class="example-spacer"></span>
-  <mat-form-field class="autocomplete-header" appearance="fill">
-    <mat-label>Nom du pokemon</mat-label>
-      <input
-        type="text"
-        matInput [formControl]="myControl"
-        [matAutocomplete]="auto"
-        class="input-autocomplete-header"
-      >
-        <mat-autocomplete
-          #auto="matAutocomplete"
-          [displayWith]="displayFn"
-        >
-          <ng-container *ngFor="let option of filteredOptions | async">
-            <a routerLink ="{{ 'pokemons/pokemon/' + option.name.toLowerCase() }}">
-              <mat-option [value]="option">
-                {{option.name}}
-              </mat-option>
-            </a>
-        </ng-container>
-        </mat-autocomplete>
-  </mat-form-field>
-  <div fxShow="true" fxHide.lt-md="true">
-    <a mat-button routerLink="/pokemons">Pokemons</a>
-    <a mat-button routerLink="/berries">Berries</a>
+  <div class="navbar-right">
+    <div class="auto-complete-navbar">
+      <mat-form-field class="autocomplete-header" appearance="fill">
+        <mat-label class="autocomplete-label">Rechercher un pokemon</mat-label>
+          <input
+            type="text"
+            matInput [formControl]="myControl"
+            [matAutocomplete]="auto"
+            class="input-autocomplete-header"
+          >
+            <mat-autocomplete
+              #auto="matAutocomplete"
+              [displayWith]="displayFn"
+            >
+              <ng-container *ngFor="let option of filteredOptions | async">
+                <a routerLink ="{{ 'pokemons/pokemon/' + option.name.toLowerCase() }}">
+                  <mat-option [value]="option">
+                    {{option.name}}
+                  </mat-option>
+                </a>
+            </ng-container>
+            </mat-autocomplete>
+      </mat-form-field>
+    </div>
+    <div fxShow="true" fxHide.lt-md="true">
+      <a mat-button routerLink="/pokemons">Pokemons</a>
+    </div>
+    <div>
+      <a mat-button routerLink="/berries">Berries</a>
+    </div>
   </div>
 </mat-toolbar>
