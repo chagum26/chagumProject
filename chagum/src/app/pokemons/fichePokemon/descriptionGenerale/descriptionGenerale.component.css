@@ -14,6 +14,7 @@
 .display-carte-pokemon{
   display: flex;
   justify-content: center;
+  font-size: 18px;
 }
 
 .label-id {
@@ -21,10 +22,15 @@
   align-items: center;
 }
 
+::ng-deep .label-id .mat-mdc-card-title {
+  font-size: 25px;
+}
+
 .col-left,
 .col-right {
   max-width: 50%;
   min-width: 50%;
+  padding: 0px 10px;
 }
 
 ::ng-deep .mat-mdc-card.mdc-card.pictures-card-mat{
@@ -62,3 +68,23 @@
   display: flex;
   justify-content: center;
 }
+
+.boutons-version {
+  align-items: center;
+}
+
+.boutons-version div {
+  margin-right: 8px;
+}
+
+
+
+.boutons-version div button svg {
+  width: 48px;
+  height: 48px;
+  position: relative;
+  right: 12px;
+  bottom: 12px;
+}
+
+

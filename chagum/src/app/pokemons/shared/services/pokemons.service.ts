@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { PokemonData } from '../models/pokemonData';
-import { MyPokemonData } from '../models/myPokemonData';
+import { MyPokemonData } from '../models/pokemonDataCard';
 import { ColorService } from 'src/app/shared/services/color.service';
 
 @Injectable({

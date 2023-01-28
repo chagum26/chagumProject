@@ -1,9 +1,9 @@
 <div class="display-carte-pokemon">
   <mat-card class="carte-pokemon">
-    <mat-card-header class="pokemon-name">
-      <div class="label-id flex flex-col">
+    <mat-card-header class="pokemon-name mt-4">
+      <div class="label-id flex flex-col mb-8">
         <mat-card-title>{{ myFichePokemonData?.name }}</mat-card-title>
-        <mat-card-subtitle>#{{ myFichePokemonData?.id }}</mat-card-subtitle>
+        <mat-card-subtitle>No. #{{ myFichePokemonData?.id }}</mat-card-subtitle>
       </div>
     </mat-card-header>
     <mat-card-content class="pokemon-content">
@@ -25,6 +25,25 @@
           </mat-card>
         </div>
         <div class="col-right">
+          <div class="descriptions-pokemon">
+            <div class="my-4">{{ descriptionPokemon }}</div>
+            <div class="boutons-version flex flex-row">
+              <div>Versions :</div>
+              <div class="bouton-gauche">
+                <button mat-icon-button matTooltip="Basic" aria-label="Example icon-button with a heart icon" (click)="setDescriptionPokemon(this.pokemonSpeciesData.flavor_text_entries[0])">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="red" d="M12 2a10 10 0 0 1 10 10a10 10 0 0 1-10 10A10 10 0 0 1 2 12A10 10 0 0 1 12 2m0 2c-4.08 0-7.45 3.05-7.94 7h4.07c.44-1.73 2.01-3 3.87-3c1.86 0 3.43 1.27 3.87 3h4.07c-.49-3.95-3.86-7-7.94-7m0 16c4.08 0 7.45-3.05 7.94-7h-4.07c-.44 1.73-2.01 3-3.87 3c-1.86 0-3.43-1.27-3.87-3H4.06c.49 3.95 3.86 7 7.94 7m0-10a2 2 0 0 0-2 2a2 2 0 0 0 2 2a2 2 0 0 0 2-2a2 2 0 0 0-2-2Z"/></svg>
+                </button>
+              </div>
+              <div class="bouton-droit">
+                <button mat-icon-button matTooltip="Basic" aria-label="Example icon-button with a heart icon" (click)="setDescriptionPokemon(this.pokemonSpeciesData.flavor_text_entries[2])">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="blue" d="M12 2a10 10 0 0 1 10 10a10 10 0 0 1-10 10A10 10 0 0 1 2 12A10 10 0 0 1 12 2m0 2c-4.08 0-7.45 3.05-7.94 7h4.07c.44-1.73 2.01-3 3.87-3c1.86 0 3.43 1.27 3.87 3h4.07c-.49-3.95-3.86-7-7.94-7m0 16c4.08 0 7.45-3.05 7.94-7h-4.07c-.44 1.73-2.01 3-3.87 3c-1.86 0-3.43-1.27-3.87-3H4.06c.49 3.95 3.86 7 7.94 7m0-10a2 2 0 0 0-2 2a2 2 0 0 0 2 2a2 2 0 0 0 2-2a2 2 0 0 0-2-2Z"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="morphologie-pokemon">
+
+          </div>
           <mat-chip-listbox class="pokemon-content type-chip">
             <mat-chip *ngFor="let type of myFichePokemonData?.types;" [ngStyle]="{'background-color': type.color}">{{ type.name }}</mat-chip>
           </mat-chip-listbox>
