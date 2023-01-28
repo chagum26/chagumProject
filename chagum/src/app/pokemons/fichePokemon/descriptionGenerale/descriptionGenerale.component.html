@@ -1,0 +1,35 @@
+<div class="display-carte-pokemon">
+  <mat-card class="carte-pokemon">
+    <mat-card-header class="pokemon-name">
+      <div class="label-id flex flex-col">
+        <mat-card-title>{{ myFichePokemonData?.name }}</mat-card-title>
+        <mat-card-subtitle>#{{ myFichePokemonData?.id }}</mat-card-subtitle>
+      </div>
+    </mat-card-header>
+    <mat-card-content class="pokemon-content">
+      <div class="flex flex-row">
+        <div class="col-left">
+          <mat-card class="pictures-card-mat">
+            <div class="title-card-picture ml-4">
+              <mat-card-title>Formes</mat-card-title>
+              <mat-card-subtitle>(Défaut / Shiney)</mat-card-subtitle>
+            </div>
+            <div class="pictures">
+              <div class="default-picture">
+                <img src='{{ myFichePokemonData?.picturesUrl?.front_default}}'>
+              </div>
+              <div class="shiney-picture">
+                <img src='{{ myFichePokemonData?.picturesUrl?.front_shiny}}'>
+              </div>
+            </div>
+          </mat-card>
+        </div>
+        <div class="col-right">
+          <mat-chip-listbox class="pokemon-content type-chip">
+            <mat-chip *ngFor="let type of myFichePokemonData?.types;" [ngStyle]="{'background-color': type.color}">{{ type.name }}</mat-chip>
+          </mat-chip-listbox>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

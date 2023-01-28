@@ -1,2 +1,22 @@
 <app-header></app-header>
-<router-outlet></router-outlet>
+<mat-drawer-container [hasBackdrop]="false" autosize>
+  <mat-drawer #drawer mode="side">Mon sidenav</mat-drawer>
+  <mat-drawer-content class="max-h-full">
+    <div class="ma-page">
+      <div class="bouton-menu flex flex-col flex-auto">
+        <button mat-icon-button (click)="drawer.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
+      <div class="contenu">
+        <div>
+          <mat-drawer-content>
+              <router-outlet></router-outlet>
+          </mat-drawer-content>
+        </div>
+      </div>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>
+
+
