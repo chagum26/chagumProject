@@ -1,3 +1,5 @@
+
+import { PokemonChartData } from './../models/pokemonChartData/pokemonChartData';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -49,6 +51,9 @@ export class DescriptionGeneraleService {
               type = this.colorService.setColorType(type);
               myPokemon.types.push(type.type);
             });
+            break;
+          case 'stats' :
+            myPokemon.stats = pokemonData.stats;
             break;
           default:
             break;

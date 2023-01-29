@@ -3,6 +3,7 @@ import { SidebarModule } from 'primeng/sidebar';
 import { ButtonModule } from 'primeng/button';
 import { AvatarModule } from 'primeng/avatar';
 import { AvatarGroupModule } from 'primeng/avatargroup';
+import { ChartModule } from 'primeng/chart';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { AvatarGroupModule } from 'primeng/avatargroup';
     ButtonModule,
     AvatarModule,
     AvatarGroupModule,
+    ChartModule,
   ]
 })
 export class PrimengModule { }
