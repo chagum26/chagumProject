@@ -14,6 +14,7 @@
 .display-carte-pokemon{
   display: flex;
   justify-content: center;
+  font-size: 18px;
 }
 
 .label-id {
@@ -21,10 +22,26 @@
   align-items: center;
 }
 
+::ng-deep .label-id .mat-mdc-card-title {
+  margin-bottom:5px;
+  font-size: 35px;
+}
+
+::ng-deep .label-id .mat-mdc-card-subtitle {
+  font-size: 20px;
+}
+
 .col-left,
 .col-right {
   max-width: 50%;
   min-width: 50%;
+}
+
+.pokemon-content .col-left,
+.pokemon-content .col-right {
+  max-width: 50%;
+  min-width: 50%;
+  padding: 0px 10px;
 }
 
 ::ng-deep .mat-mdc-card.mdc-card.pictures-card-mat{
@@ -61,4 +78,52 @@
 .default-picture {
   display: flex;
   justify-content: center;
+}
+
+.boutons-version {
+  align-items: center;
+}
+
+.boutons-version div {
+  margin-right: 8px;
+}
+
+.boutons-version div button svg {
+  width: 48px;
+  height: 48px;
+  position: relative;
+  right: 12px;
+  bottom: 12px;
+}
+
+::ng-deep .morphologie-pokemon .mat-mdc-card.mdc-card{
+  background-color: #30a7d7;
+}
+
+.morphologie-pokemon ul li{
+  margin-bottom: 15px;
+}
+.morphologie-pokemon ul li div{
+  margin-top: 7px;
+}
+
+.color-text-morphologie {
+  color: white;
+}
+
+.section-types-pokemon .type-title{
+  font-weight: 500;
+}
+
+.types-pokemon{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.type-pokemon {
+  display: flex;
+  justify-content: center;
+  min-width: 70px;
+  max-width: 70px;
+  margin: 0px 5px 5px;
 }

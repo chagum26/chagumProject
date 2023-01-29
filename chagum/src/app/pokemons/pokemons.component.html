@@ -1,5 +1,5 @@
 <div class="cartes-pokemon">
-  <div class="d-flex pagination-cartes">
+  <div class="pagination-cartes flex flex-row">
     <mat-paginator [length]="paginatorData.length"
                   [pageSize]="paginatorData.pageSize"
                   [pageSizeOptions]="[10, 20, 100]"
@@ -8,9 +8,9 @@
                   aria-label="Select page"
                   class="paginator-pokemon">
     </mat-paginator>
-    <div class="go-to-container">
-      <div class="go-to-label">Page : </div>
-      <mat-form-field>
+    <div class="pagination-select">
+      <div class="choix-page-select">Page : </div>
+      <mat-form-field class="select-page-option">
         <mat-select [(ngModel)]="goTo" (selectionChange)="goToChange($event)">
           <mat-option *ngFor="let pageNumber of pageNumbers" [value]="pageNumber">{{pageNumber}}</mat-option>
         </mat-select>
@@ -54,8 +54,8 @@
                   aria-label="Select page"
                   class="paginator-pokemon">
     </mat-paginator>
-    <div class="go-to-container">
-      <div class="go-to-label">Page : </div>
+    <div class="pagination-select">
+      <div class="choix-page-select">Page : </div>
       <mat-form-field>
         <mat-select [(ngModel)]="goTo" (selectionChange)="goToChange($event)">
           <mat-option *ngFor="let pageNumber of pageNumbers" [value]="pageNumber">{{pageNumber}}</mat-option>

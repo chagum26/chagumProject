@@ -1,4 +1,5 @@
 import { imagePokemon } from "./forms/imagePokemon";
+import { Stats } from "./stats/stats";
 import { TypesPokemon } from "./types/typesPokemon";
 
 export interface PokemonData {
@@ -8,6 +9,7 @@ export interface PokemonData {
   weight: number;
   sprites: imagePokemon;
   types: TypesPokemon[];
+  stats: Stats[];
   /*abilities: Ability[];
   species: Species;
   types: Type[];*/

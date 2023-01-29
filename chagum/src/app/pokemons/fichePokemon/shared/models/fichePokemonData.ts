@@ -1,4 +1,5 @@
 import { imagePokemon } from "src/app/pokemons/shared/models/forms/imagePokemon";
+import { Stats } from "src/app/pokemons/shared/models/stats/stats";
 import { TypePokemon } from "src/app/pokemons/shared/models/types/typePokemon";
 
 export class FichePokemonData {
@@ -8,5 +9,6 @@ export class FichePokemonData {
   weight!: number;
   picturesUrl?: imagePokemon;
   types: TypePokemon[] = [];
+  stats!: Stats[];
 }
 

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { TypePokemon } from 'src/app/pokemons/shared/models/types/typePokemon';
 import { TypesPokemon } from 'src/app/pokemons/shared/models/types/typesPokemon';
 
 @Injectable({
@@ -84,6 +85,68 @@ export class ColorService {
         break;
       case 'fairy':
         type.type.color = this.colours.fairy;
+        break;
+      default:
+        break;
+    }
+    return type;
+  }
+
+  setColorTypeFromApi(type: TypePokemon): TypePokemon {
+    switch(type.name){
+      case 'normal':
+        type.color = this.colours.normal;
+        break;
+      case 'fire':
+        type.color = this.colours.fire;
+        break;
+      case 'water':
+        type.color = this.colours.water;
+        break;
+      case 'electric':
+        type.color = this.colours.electric;
+        break;
+      case 'grass':
+        type.color = this.colours.grass;
+        break;
+      case 'ice':
+        type.color = this.colours.ice;
+        break;
+      case 'fighting':
+        type.color = this.colours.fighting;
+        break;
+      case 'poison':
+        type.color = this.colours.poison;
+        break;
+      case 'ground':
+        type.color = this.colours.ground;
+        break;
+      case 'flying':
+        type.color = this.colours.flying;
+        break;
+      case 'psychic':
+        type.color = this.colours.psychic;
+        break;
+      case 'bug':
+        type.color = this.colours.bug;
+        break;
+      case 'rock':
+        type.color = this.colours.rock;
+        break;
+      case 'ghost':
+        type.color = this.colours.ghost;
+        break;
+      case 'dragon':
+        type.color = this.colours.dragon;
+        break;
+      case 'dark':
+        type.color = this.colours.dark;
+        break;
+      case 'steel':
+        type.color = this.colours.steel;
+        break;
+      case 'fairy':
+        type.color = this.colours.fairy;
         break;
       default:
         break;

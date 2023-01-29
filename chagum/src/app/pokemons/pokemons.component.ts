@@ -1,4 +1,4 @@
-import { MyPokemonData } from './shared/models/myPokemonData';
+import { MyPokemonData } from './shared/models/pokemonDataCard';
 import { PokemonsService } from './shared/services/pokemons.service';
 import { Component, OnInit } from '@angular/core';
 import { first } from 'rxjs';

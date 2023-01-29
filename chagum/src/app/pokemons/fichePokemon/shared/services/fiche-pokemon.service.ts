@@ -3,7 +3,7 @@ import { ColorService } from './../../../../shared/services/color.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { MyPokemonData } from 'src/app/pokemons/shared/models/myPokemonData';
+import { MyPokemonData } from 'src/app/pokemons/shared/models/pokemonDataCard';
 import { PokemonData } from 'src/app/pokemons/shared/models/pokemonData';
 
 @Injectable({

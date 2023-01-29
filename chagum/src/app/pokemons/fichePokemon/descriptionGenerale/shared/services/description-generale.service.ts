@@ -1,9 +1,12 @@
+
+import { PokemonChartData } from './../models/pokemonChartData/pokemonChartData';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PokemonData } from 'src/app/pokemons/shared/models/pokemonData';
 import { ColorService } from 'src/app/shared/services/color.service';
-import { FichePokemonData } from '../../shared/models/fichePokemonData';
+import { FichePokemonData } from '../../../shared/models/fichePokemonData';
+import { PokemonSpeciesData } from '../models/pokemonSpeciesData';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +20,10 @@ export class DescriptionGeneraleService {
 
     getDataFromPokemonByName(name: string): Observable<PokemonData> {
       return this.http.get<PokemonData>("https://pokeapi.co/api/v2/pokemon/" + name);
+    }
+
+    getMoreDataFromPokemonByName(name: string): Observable<PokemonSpeciesData> {
+      return this.http.get<PokemonSpeciesData>("https://pokeapi.co/api/v2/pokemon-species/" + name);
     }
 
     convertPokemonsDataToFichePokemonData(pokemonData: PokemonData): FichePokemonData {
@@ -44,6 +51,9 @@ export class DescriptionGeneraleService {
               type = this.colorService.setColorType(type);
               myPokemon.types.push(type.type);
             });
+            break;
+          case 'stats' :
+            myPokemon.stats = pokemonData.stats;
             break;
           default:
             break;
