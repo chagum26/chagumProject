@@ -3,6 +3,7 @@ import { PokemonsRoutes } from './pokemons.routing';
 import { NgModule } from '@angular/core';
 import { PokemonsComponent } from './pokemons.component';
 import { SharedModule } from '../shared/shared.module';
+import { CartePokemonComponent } from './shared/carte-pokemon/carte-pokemon.component';
 
 @NgModule({
   imports: [
@@ -10,6 +11,6 @@ import { SharedModule } from '../shared/shared.module';
     SharedModule,
     PageModule,
   ],
-  declarations: [PokemonsComponent]
+  declarations: [PokemonsComponent, CartePokemonComponent]
 })
 export class PokemonsModule { }

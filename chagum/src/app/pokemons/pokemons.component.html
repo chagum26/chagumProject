@@ -20,28 +20,7 @@
 
   <div class="grid grid-cols-4">
     <div *ngFor="let myPokemon of myPokemons;" fxLayoutAlign="center none">
-      <mat-card class="carte-pokemon">
-        <mat-card-header class="pokemon-content">
-          <mat-card-title>{{ myPokemon.name }}</mat-card-title>
-          <mat-card-subtitle>#{{ myPokemon.id }}</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content class="pokemon-content ">
-          <div class="flex flex-col">
-            <li class="flex justify-center">
-              <a routerLink ="{{ 'pokemon/' + myPokemon.name.toLowerCase() }}">
-                <img src='{{ myPokemon.picturesUrl?.front_default}}'>
-              </a>
-            </li>
-            <li>
-            <div class="types-pokemon">
-              <ng-container *ngFor="let type of myPokemon.types;">
-                <div class="type-pokemon rounded" [ngStyle]="{'background-color': type.color}">{{ type.name }}</div>
-              </ng-container>
-            </div>
-            </li>
-          </div>
-        </mat-card-content>
-      </mat-card>
+      <app-carte-pokemon [myPokemon]="myPokemon"></app-carte-pokemon>
     </div>
   </div>
 
