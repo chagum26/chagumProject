@@ -101,15 +101,21 @@
       <div class="evolution-section">
         <mat-card>
           <mat-card-content>
-            <div class="pokemonsEvolution">
+            <div class="pokemonsEvolution flex flex-row">
               <div>
-
+                <ng-container *ngFor="let pokemon of evolutionStep1">
+                  <app-carte-pokemon [myPokemon]="pokemon"></app-carte-pokemon>
+                </ng-container>
               </div>
               <div>
-
+                <ng-container *ngFor="let pokemon of evolutionStep2">
+                  <app-carte-pokemon [myPokemon]="pokemon"></app-carte-pokemon>
+                </ng-container>
               </div>
               <div>
-
+                <ng-container *ngFor="let pokemon of evolutionStep3">
+                  <app-carte-pokemon [myPokemon]="pokemon"></app-carte-pokemon>
+                </ng-container>
               </div>
             </div>
           </mat-card-content>

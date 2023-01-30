@@ -7,13 +7,13 @@
     <div class="flex flex-col">
       <li class="flex justify-center">
         <a routerLink ="{{ 'pokemon/' + myPokemon.name.toLowerCase() }}">
-          <img src='{{ myPokemon.picturesUrl?.front_default}}'>
+          <img src='{{ myPokemon.sprites.front_default}}'>
         </a>
       </li>
       <li>
-      <div class="types-pokemon">
+      <div class="types-pokemon flex flex-wrap mb-2">
         <ng-container *ngFor="let type of myPokemon.types;">
-          <div class="type-pokemon rounded" [ngStyle]="{'background-color': type.color}">{{ type.name }}</div>
+          <div class="type-pokemon rounded" [ngStyle]="{'background-color': type.type.color}">{{ type.type.name }}</div>
         </ng-container>
       </div>
       </li>

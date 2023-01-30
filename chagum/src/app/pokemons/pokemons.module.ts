@@ -11,6 +11,6 @@ import { CartePokemonComponent } from './shared/carte-pokemon/carte-pokemon.comp
     SharedModule,
     PageModule,
   ],
-  declarations: [PokemonsComponent, CartePokemonComponent]
+  declarations: [PokemonsComponent]
 })
 export class PokemonsModule { }

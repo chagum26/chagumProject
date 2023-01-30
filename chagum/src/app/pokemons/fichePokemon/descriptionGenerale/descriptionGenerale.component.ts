@@ -1,3 +1,4 @@
+import { PokemonsService } from './../../shared/services/pokemons.service';
 import { ChainLink } from './shared/models/evolutions/chainLink';
 import { EvolutionChain } from './shared/models/evolutions/evolutionChain';
 import { TypeService } from './shared/services/type.service';
@@ -49,6 +50,7 @@ export class DescriptionGeneraleComponent implements OnChanges {
 
   constructor(
     private descriptionGeneraleService: DescriptionGeneraleService,
+    private pokemonService: PokemonsService,
     private typeService: TypeService,
   ) {
 
@@ -87,18 +89,18 @@ export class DescriptionGeneraleComponent implements OnChanges {
             this.evolutionChainData = evolutionStarter;
             this.descriptionGeneraleService.getDataFromPokemonByName(this.evolutionChainData.chain.species.name)
               .pipe(first())
-              .subscribe((evolutionStep1) => this.evolutionStep1.push(evolutionStep1));
+              .subscribe((evolutionStep1) => this.evolutionStep1.push(this.setAllDataPokemonData(evolutionStep1)));
             this.evolutionChainData.chain.evolves_to.map((evolvesFromStep1To2) => {
               this.descriptionGeneraleService.getDataFromPokemonByName(evolvesFromStep1To2.species.name)
                 .pipe(first())
                 .subscribe((evolutionStep2) => {
-                this.evolutionStep2.push(evolutionStep2);
+                this.evolutionStep2.push(this.setAllDataPokemonData(evolutionStep2));
                 evolvesFromStep1To2.evolves_to?.map((evolvesFromStep2To3) => {
 
                   this.descriptionGeneraleService.getDataFromPokemonByName(evolvesFromStep2To3.species.name)
                     .pipe(first())
                     .subscribe((evolutionStep3) => {
-                    this.evolutionStep3.push(evolutionStep3);
+                    this.evolutionStep3.push(this.setAllDataPokemonData(evolutionStep3));
                   });
                 });
               });
@@ -121,5 +123,11 @@ export class DescriptionGeneraleComponent implements OnChanges {
       this.statsPokemon.datasets[0].data.push(stat.base_stat);
       this.isStatsLoaded = true;
     });
+  }
+
+  setAllDataPokemonData(pokemonData: PokemonData): PokemonData {
+    pokemonData.name = this.capitalizeFirstLetter(pokemonData.name);
+    pokemonData = this.pokemonService.setColorTypes(pokemonData);
+    return pokemonData;
   }
 }

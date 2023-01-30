@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { MyPokemonData } from '../models/pokemonDataCard';
+import { PokemonData } from '../models/pokemonData';
 
 @Component({
   selector: 'app-carte-pokemon',
@@ -7,6 +7,6 @@ import { MyPokemonData } from '../models/pokemonDataCard';
   styleUrls: ['./carte-pokemon.component.css']
 })
 export class CartePokemonComponent {
-  @Input() myPokemon!: MyPokemonData;
+  @Input() myPokemon!: PokemonData;
 
 }

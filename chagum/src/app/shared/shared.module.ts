@@ -1,3 +1,4 @@
+import { CartePokemonComponent } from './../pokemons/shared/carte-pokemon/carte-pokemon.component';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -8,7 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @NgModule({
-  declarations: [],
+  declarations: [CartePokemonComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -28,6 +29,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     FormsModule,
     ReactiveFormsModule,
     ScrollingModule,
+    CartePokemonComponent,
   ],
 })
 export class SharedModule { }

@@ -1,3 +1,4 @@
+import { CartePokemonComponent } from './../shared/carte-pokemon/carte-pokemon.component';
 import { DescriptionGeneraleComponent } from './descriptionGenerale/descriptionGenerale.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';

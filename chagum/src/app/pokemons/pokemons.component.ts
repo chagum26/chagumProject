@@ -1,10 +1,10 @@
-import { MyPokemonData } from './shared/models/pokemonDataCard';
 import { PokemonsService } from './shared/services/pokemons.service';
 import { Component, OnInit } from '@angular/core';
 import { first } from 'rxjs';
 import { Pokemon } from './shared/models/pokemon';
 import { PokemonAPI } from './shared/models/pokemonAPI';
 import { PageEvent } from '@angular/material/paginator';
+import { PokemonData } from './shared/models/pokemonData';
 
 @Component({
   selector: 'app-pokemons',
@@ -13,7 +13,7 @@ import { PageEvent } from '@angular/material/paginator';
 })
 export class PokemonsComponent implements OnInit {
   PokeAPI!: PokemonAPI;
-  myPokemons: MyPokemonData[] = [];
+  myPokemons: PokemonData[] = [];
   paginatorData: PageEvent = {
     previousPageIndex: 0,
     pageIndex: 0,
@@ -42,16 +42,16 @@ export class PokemonsComponent implements OnInit {
         .pipe(first())
         .subscribe((pokemonData) => {
           pokemon.pokeData = pokemonData;
-          this.getPokemonsDataFromAPI(pokemon);
+          this.setAllDataPokemonData(pokemon);
         });
       });
     });
   }
 
-  getPokemonsDataFromAPI(pokemonFromAPI: Pokemon) {
+  setAllDataPokemonData(pokemonFromAPI: Pokemon) {
     pokemonFromAPI.pokeData.name = this.capitalizeFirstLetter(pokemonFromAPI.pokeData.name);
-    this.myPokemons.push(this.pokemonService.convertPokemonsDataToMyPokemons(pokemonFromAPI.pokeData));
-    this.myPokemons.sort((a, b) => a.id - b.id)
+    this.myPokemons.push(this.pokemonService.setColorTypes(pokemonFromAPI.pokeData));
+    this.myPokemons.sort((a, b) => a.id - b.id);
   }
 
   capitalizeFirstLetter(value: string): string {

@@ -10,7 +10,4 @@ export interface PokemonData {
   sprites: imagePokemon;
   types: TypesPokemon[];
   stats: Stats[];
-  /*abilities: Ability[];
-  species: Species;
-  types: Type[];*/
 }

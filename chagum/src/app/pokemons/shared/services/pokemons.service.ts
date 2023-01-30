@@ -6,7 +6,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { PokemonData } from '../models/pokemonData';
-import { MyPokemonData } from '../models/pokemonDataCard';
 import { ColorService } from 'src/app/shared/services/color.service';
 
 @Injectable({
@@ -34,31 +33,12 @@ export class PokemonsService {
     return this.http.get<PokemonData>(url);
   }
 
-  convertPokemonsDataToMyPokemons(pokemonData: PokemonData): MyPokemonData {
-    let myPokemon = new MyPokemonData();
-    for(const property in pokemonData) {
-      switch(property) {
-        case 'id':
-          myPokemon.id = pokemonData.id;
-          break;
-        case 'name':
-          myPokemon.name = pokemonData.name;
-          break;
-        case 'sprites':
-          myPokemon.picturesUrl = pokemonData.sprites;
-          break;
-        case 'types':
-          pokemonData.types
-          .map((type) => {
-            type = this.colorService.setColorType(type);
-            myPokemon.types.push(type.type);
-          });
-          break;
-        default:
-          break;
-      }
-    }
-    return myPokemon;
+  setColorTypes(pokemonData: PokemonData): PokemonData{
+    pokemonData.types
+      .map((type) => {
+        type = this.colorService.setColorType(type);
+      });
+    return pokemonData;
   }
 
 
