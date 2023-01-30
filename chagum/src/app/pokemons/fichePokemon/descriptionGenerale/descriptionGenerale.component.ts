@@ -1,3 +1,5 @@
+import { ChainLink } from './shared/models/evolutions/chainLink';
+import { EvolutionChain } from './shared/models/evolutions/evolutionChain';
 import { TypeService } from './shared/services/type.service';
 import { Component, Input, OnChanges } from '@angular/core';
 import { FichePokemonData } from '../shared/models/fichePokemonData';
@@ -25,6 +27,11 @@ export class DescriptionGeneraleComponent implements OnChanges {
   statsPokemon = new PokemonChartData();
   isStatsLoaded: boolean = false;
 
+  evolutionChainData?: EvolutionChain;
+  evolutionStep1: PokemonData[] = [];
+  evolutionStep2: PokemonData[] = [];
+  evolutionStep3: PokemonData[] = [];
+
   chartOptions = {
     responsive: true,
     plugins: {
@@ -48,6 +55,7 @@ export class DescriptionGeneraleComponent implements OnChanges {
   }
 
   ngOnChanges() {
+    //données depuis endpoint "https://pokeapi.co/api/v2/pokemon/:name"
     this.descriptionGeneraleService.getDataFromPokemonByName(this.pokemonName)
       .pipe(first())
       .subscribe((pokemonData) => {
@@ -60,16 +68,42 @@ export class DescriptionGeneraleComponent implements OnChanges {
           .subscribe((typeApiData) => {
             this.typesFaiblesses = this.typeService.convertColorForEachType(typeApiData.damage_relations.double_damage_from);
           });
+
         this.convertStatsPokemonToChartData(this.myFichePokemonData);
 
       });
 
+    //données depuis endpoint "https://pokeapi.co/api/v2/pokemon-species/:name"
     this.descriptionGeneraleService.getMoreDataFromPokemonByName(this.pokemonName)
       .pipe(first())
       .subscribe((pokemonSpeciesData) => {
         this.pokemonSpeciesData = pokemonSpeciesData;
 
         this.setDescriptionPokemon(this.pokemonSpeciesData.flavor_text_entries[0]);
+
+        this.descriptionGeneraleService.getEvolutionChain(this.pokemonSpeciesData.evolution_chain.url)
+          .pipe(first())
+          .subscribe((evolutionStarter) => {
+            this.evolutionChainData = evolutionStarter;
+            this.descriptionGeneraleService.getDataFromPokemonByName(this.evolutionChainData.chain.species.name)
+              .pipe(first())
+              .subscribe((evolutionStep1) => this.evolutionStep1.push(evolutionStep1));
+            this.evolutionChainData.chain.evolves_to.map((evolvesFromStep1To2) => {
+              this.descriptionGeneraleService.getDataFromPokemonByName(evolvesFromStep1To2.species.name)
+                .pipe(first())
+                .subscribe((evolutionStep2) => {
+                this.evolutionStep2.push(evolutionStep2);
+                evolvesFromStep1To2.evolves_to?.map((evolvesFromStep2To3) => {
+
+                  this.descriptionGeneraleService.getDataFromPokemonByName(evolvesFromStep2To3.species.name)
+                    .pipe(first())
+                    .subscribe((evolutionStep3) => {
+                    this.evolutionStep3.push(evolutionStep3);
+                  });
+                });
+              });
+            });
+          });
       });
   }
 

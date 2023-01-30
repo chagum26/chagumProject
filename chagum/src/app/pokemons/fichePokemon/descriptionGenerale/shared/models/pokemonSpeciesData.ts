@@ -6,4 +6,5 @@ export interface PokemonSpeciesData {
   flavor_text_entries: FlavorText[];
   habitat: Habitat;
   color: Color;
+  evolution_chain: { url: string };
 }

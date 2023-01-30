@@ -1,10 +1,9 @@
-
-import { PokemonChartData } from './../models/pokemonChartData/pokemonChartData';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PokemonData } from 'src/app/pokemons/shared/models/pokemonData';
 import { ColorService } from 'src/app/shared/services/color.service';
+import { EvolutionChain } from '../models/evolutions/evolutionChain';
 import { FichePokemonData } from '../../../shared/models/fichePokemonData';
 import { PokemonSpeciesData } from '../models/pokemonSpeciesData';
 
@@ -24,6 +23,10 @@ export class DescriptionGeneraleService {
 
     getMoreDataFromPokemonByName(name: string): Observable<PokemonSpeciesData> {
       return this.http.get<PokemonSpeciesData>("https://pokeapi.co/api/v2/pokemon-species/" + name);
+    }
+
+    getEvolutionChain(urlEvolution: string): Observable<EvolutionChain> {
+      return this.http.get<EvolutionChain>(urlEvolution);
     }
 
     convertPokemonsDataToFichePokemonData(pokemonData: PokemonData): FichePokemonData {
